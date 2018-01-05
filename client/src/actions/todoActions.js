@@ -1,38 +1,68 @@
 import * as api from '../api/database'
 
-export function addTodo(todoText) {
+// ** Export Methods **
 
-	let { todo } = api.addTodo({text: todoText, completed: false})
+// handles adding a new todo and persisting to storage
+export function addTodo(todoText){
+	let { data, errors } = api.addTodo({text: todoText, completed: false})
 
-  return function (dispatch) {
-    return dispatch({
-      type: 'ADD_TODO',
+	if( errors ) return generateError('An error occurred when adding a to-do. Please try again.')
+
+	let todo = data
+
+	return function (dispatch) {
+		return dispatch({
+			type: 'ADD_TODO',
 			text: todo.text,
 			todoId : todo.todoId
-    })
-  }
+		})
+	}
+
 }
 
+// handles toggling the completed property of a single todo item by id
 export function toggleTodo(todoId) {
+	let { errors } = api.toggleTodo(todoId)
 
-	let todo = api.toggleTodo(todoId)
+	if( errors ) return generateError('An error occurred when changing the status of a to-do. Please try again.')
 
+	return function (dispatch) {
+		return dispatch({
+			type: 'TOGGLE_TODO',
+			todoId
+		})
+	}
+}
+
+// handles filtering the viewable todos by user-selected filter
+export function setTodosVisibilty(value) {
+	let { errors } = api.setTodosVisibilty(value)
+
+	if( errors ) return generateError('Oops! An error occurred when filtering your to-do items. Please try again.')
+
+	return function (dispatch) {
+		return dispatch({
+			type: 'SET_TODO_VISIBILITY',
+			todosVisibility: value
+		})
+	}
+}
+
+// general usage for creating error messages
+export function generateError(msg) {
   return function (dispatch) {
     return dispatch({
-      type: 'TOGGLE_TODO',
-			todoId
+      type: 'GENERATE_ERROR',
+			msg: msg
     })
   }
 }
 
-export function setTodosVisibilty(value) {
-
-	let success = api.setTodosVisibilty(value)
-
+// general usage for clearing existing errors
+export function cleanErrors(value) {
   return function (dispatch) {
     return dispatch({
-      type: 'SET_TODO_VISIBILITY',
-			todosVisibility: value
+      type: 'CLEAN_ERRORS'
     })
   }
 }

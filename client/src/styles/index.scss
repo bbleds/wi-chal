@@ -1,11 +1,29 @@
 $carbon : #A9A9A9;
 $sky : #CAEBF2;
 $light-border: 1px solid rgba(0,0,0,.06);
+$sleek-red: #FF3b3F;
 
 .subtle-text {
 	color: $carbon;
 	font-weight: lighter;
 	letter-spacing: .1em;
+}
+
+.error-message{
+	position: absolute;
+	width: 100%;
+	margin: 0px;
+	background-color: $sleek-red;
+	top: 0px;
+	left: 0px;
+	padding: 20px;
+}
+
+.clear-error{
+	position: absolute;
+	right: 0px;
+	padding: 0px 20px;
+	cursor: pointer;
 }
 
 #todo-wrapper{
@@ -28,7 +46,7 @@ $light-border: 1px solid rgba(0,0,0,.06);
 	h1{
 		margin: 0px;
 		padding: 20px;
-		background-color: #FF3b3F;
+		background-color: $sleek-red;
 		font-weight: lighter;
 		color: white
 	}

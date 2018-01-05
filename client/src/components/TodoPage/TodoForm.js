@@ -1,17 +1,15 @@
 import React from 'react'
 
-const TodoForm = ({submitHandler}) => {
+const TodoForm = ({submitHandler, errorHandler}) => {
 	let todoInput
 
-	let validateInput = (value) => {
-		return !value.length ? false : true
-	}
+	let validateInput = value => !value.length ? false : true
 
 	let submit = () => {
 		let value = todoInput.value.trim()
 
 		if(!validateInput(value)){
-			alert('Oops! You cannot create an empty to-do. Please try again.')
+			errorHandler('Oops! You cannot create an empty to-do. Please try again.')
 		}else{
 			submitHandler(value)
 			todoInput.value = ''
@@ -24,11 +22,11 @@ const TodoForm = ({submitHandler}) => {
 				className="form-control"
 				type='text'
 				placeholder="Enter a todo..."
-				ref={ (node)=> todoInput = node }
-				onKeyUp={(e)=>{ e.key.toLowerCase() === 'enter' ? ( submit() ) : false}}
+				ref={ node => todoInput = node }
+				onKeyUp={ e => e.key.toLowerCase() === 'enter' ? ( submit() ) : false }
 				aria-describedby="todo-input-addon"
 			/>
-		<span className="input-group-addon" id="todo-input-addon" onClick={ () => submit() }>Add</span>
+			<span className="input-group-addon" id="todo-input-addon" onClick={ () => submit() }>Add</span>
 		</div>
 	)
 }

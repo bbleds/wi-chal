@@ -1,9 +1,7 @@
 import React from 'react'
 
 const TodoItem = ({ data, checkable, onChangeHandler}) => {
-	let handleChange = (todoId) => {
-		onChangeHandler(todoId)
-	}
+	let handleChange = todoId => onChangeHandler(todoId)
 
 	let currentClass = data.completed ? 'completed-task' : ''
 
@@ -11,7 +9,7 @@ const TodoItem = ({ data, checkable, onChangeHandler}) => {
 		<li className={currentClass}>
 			<label>
 				{
-					checkable ? <input type="checkbox" onChange={()=> handleChange(data.todoId) } defaultChecked={data.completed} /> : ''
+					checkable ? <input type="checkbox" onChange={() => handleChange(data.todoId) } defaultChecked={data.completed} /> : ''
 				}
 				<span> {data.text}</span>
 				<span className='subtle-complete'>{ data.completed ? ' - completed' : ''}</span>

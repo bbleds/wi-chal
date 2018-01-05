@@ -5,37 +5,33 @@ import TodoItem from './TodoItem'
 
 const TodoList = ({todos, onChangeHandler, todosVisibility}) => {
 
-	// sort by completed status and then alphanumerically
+	// custom compare function to sort by "completed" status and then alphanumerically
 	let sortCompleteAndAlphanum = (a,b) => {
 		if(a.completed && !b.completed) return 1
 		if(b.completed && !a.completed) return -1
 		return compare(a.text.toLowerCase(), b.text.toLowerCase())
 	}
 
-	// filter by a user-selected status of todos
-	let filterBySelectedVisibility = (item) => {
+	// custom function to filter todos by user-selected "completed" status
+	let filterBySelectedVisibility = item => {
 		let completedStatusSort = null
 
 		switch(todosVisibility) {
 			case 'completed':
 				completedStatusSort = true
 				break
-			case 'todo':
+			case 'to-do':
 				completedStatusSort = false
 				break
 			default:
 				break
 		}
 
-		if(completedStatusSort === item.completed || completedStatusSort === null){
-			return true
-		}
+		if(completedStatusSort === item.completed || completedStatusSort === null) return true
 	}
 
-	let cleanedTodos = todos.sort(sortCompleteAndAlphanum).filter(filterBySelectedVisibility)
-
-	// build output
-	let output = cleanedTodos.map(
+	// filter, sort, and build output
+	let output = todos.filter(filterBySelectedVisibility).sort(sortCompleteAndAlphanum).map(
 		(item) => {
 			return (
 				<TodoItem
@@ -47,6 +43,7 @@ const TodoList = ({todos, onChangeHandler, todosVisibility}) => {
 		)}
 	)
 
+	// show default message if no todos are found
 	output = output.length ? output : (<TodoItem  checkable={false} data={{text:'No todo items available'}}/>)
 
 	return(
