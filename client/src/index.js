@@ -3,10 +3,9 @@ import React from 'react'
 import {render} from 'react-dom'
 import Root from './components/Root'
 import configureStore from './store/configureStore'
-import { getState } from './api/database'
+import * as api from './api/database'
 
-const store = configureStore(getState())
-console.log('getting state from local store', getState());
+const store = configureStore(api.getState())
 
 // render application to page
 render(

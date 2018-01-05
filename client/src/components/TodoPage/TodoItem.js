@@ -3,8 +3,10 @@ import React from 'react'
 const TodoItem = ({text, checkable}) => {
 	return(
 		<li>
-			{ checkable ? <input type="checkbox" /> : '' }
-			<span>{text}</span>
+			<label>
+				{ checkable ? <input type="checkbox" /> : '' }
+				<span>{text}</span>
+			</label>
 		</li>
 	)
 }
