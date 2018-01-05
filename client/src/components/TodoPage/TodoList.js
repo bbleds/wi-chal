@@ -1,9 +1,18 @@
 import React from 'react'
-import TodoItem from './TodoItem'
 import uuid from 'uuid'
+import {compare} from 'alphanumeric-sort'
+import TodoItem from './TodoItem'
 
 const TodoList = ({todos, onChangeHandler, todosVisibility}) => {
-	let output = todos.map(
+	// sort todos by completed status and then alphanumerically
+	let sortedTodos = todos.sort((a,b) => {
+		if(a.completed && !b.completed) return 1
+		if(b.completed && !a.completed) return -1
+		return compare(a.text.toLowerCase(), b.text.toLowerCase())
+	})
+
+	// build output
+	let output = sortedTodos.map(
 		(item) => {
 
 			if(todosVisibility == 'completed' && item.completed == false){
