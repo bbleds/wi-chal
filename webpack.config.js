@@ -10,15 +10,42 @@ module.exports = {
     filename: './client/dist/bundle.js'
   },
   module: {
-    loaders: [
-      {
+		rules: [
+    {
+      test: /\.js$/,
+      exclude: /(node_modules)/,
+      use: {
         loader: 'babel-loader',
-        query: {
+        options: {
           presets: ['react', 'es2015', 'stage-0']
-        },
-        test: /\.jsx?$/,
-        exclude: /(node_modules)/
+        }
       }
-    ]
+    },
+		{
+			test: /(\.css|\.scss)$/,
+			use: [
+				'style-loader',
+				{
+					loader: 'css-loader',
+					options: {
+						sourceMap: true
+					}
+				},{
+					loader: 'sass-loader',
+					options: {
+						includePaths: [path.resolve(__dirname, 'src', 'scss')],
+						sourceMap: true
+					}
+				}
+			]
+		},
+		 {
+			 test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+			 loader: 'url-loader',
+			 options: {
+				 limit: 10000
+			 }
+		 }
+  ]
   }
 }

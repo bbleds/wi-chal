@@ -19,14 +19,16 @@ const TodoForm = ({submitHandler}) => {
 	}
 
 	return(
-		<div>
+		<div id="todo-input-form" className="input-group">
 			<input
+				className="form-control"
 				type='text'
 				placeholder="Enter a todo..."
 				ref={ (node)=> todoInput = node }
 				onKeyUp={(e)=>{ e.key.toLowerCase() === 'enter' ? ( submit() ) : false}}
+				aria-describedby="todo-input-addon"
 			/>
-			<button onClick={ () => submit() }>Add</button>
+		<span className="input-group-addon" id="todo-input-addon" onClick={ () => submit() }>Add</span>
 		</div>
 	)
 }

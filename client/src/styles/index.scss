@@ -1,0 +1,90 @@
+$carbon : #A9A9A9;
+$sky : #CAEBF2;
+$light-border: 1px solid rgba(0,0,0,.06);
+
+.subtle-text {
+	color: $carbon;
+	font-weight: lighter;
+	letter-spacing: .1em;
+}
+
+#todo-wrapper{
+	margin-top: 100px;
+}
+
+#todo-app-output{
+	overflow: hidden;
+	border: $light-border;
+	border-radius: 7px;
+	text-align: center;
+	padding: 0px;
+	box-shadow: 5px 5px 20px 3px rgba(0,0,0,.1);
+	padding-bottom: 25px;
+	@extend .subtle-text;
+
+	h1{
+		margin: 0px;
+		padding: 20px;
+		background-color: #FF3b3F;
+		font-weight: lighter;
+		color: white
+	}
+
+	a{
+		text-decoration: none;
+		color: $carbon;
+	}
+
+	#todo-input-form{
+		width: 70%;
+		margin-left: 15%;
+		padding: 20px;
+		padding-bottom: 5px;
+
+		.input-group-addon{
+			background-color: whitesmoke;
+		}
+
+		span{
+			cursor: pointer;
+		}
+	}
+}
+
+.todo-list{
+	list-style: none;
+	padding: 0px;
+	width: 100%;
+	margin: 0px;
+	margin-bottom: 25px;
+
+	li, label, input {
+		cursor: pointer;
+	}
+
+	li{
+		background-color: #fbfbfb;
+		text-align: left;
+		width: 100%;
+		color: #555;
+		border: $light-border;
+		transition-duration: .4s;
+
+		&:hover{
+			background-color: #f1f1f1;
+		}
+
+		label{
+			padding: 20px;
+			width: 100%;
+		}
+
+		input{
+			margin-right: 20px;
+		}
+
+		span{
+			font-weight: lighter;
+		}
+	}
+}

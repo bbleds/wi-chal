@@ -62,3 +62,9 @@ typings/
 
 # don't track bundle files
 client/dist/bundle.js
+
+.woff2
+.svg
+.ttf
+.eot
+.woff

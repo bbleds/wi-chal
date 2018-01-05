@@ -50,7 +50,7 @@ const TodoList = ({todos, onChangeHandler, todosVisibility}) => {
 	output = output.length ? output : (<TodoItem  checkable={false} data={{text:'No todo items available'}}/>)
 
 	return(
-		<ul>
+		<ul className='todo-list'>
 			{output}
 		</ul>
 	)

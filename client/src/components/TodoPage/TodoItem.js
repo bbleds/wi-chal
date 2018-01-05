@@ -11,7 +11,7 @@ const TodoItem = ({ data, checkable, onChangeHandler}) => {
 				{
 					checkable ? <input type="checkbox" onChange={()=> handleChange(data.todoId) } defaultChecked={data.completed} /> : ''
 				}
-				<span>{data.text}</span>
+				<span> {data.text} </span>
 			</label>
 		</li>
 	)

@@ -14,30 +14,34 @@ class TodoContainer extends Component{
 		let { todos, todosVisibility, state } = this.props
 
 		return(
-			<div>
-				<h1>To-do Manager</h1>
-				<TodoForm
-					submitHandler={
-						(value)=>{
-							this.props.actions.addTodo(value)
-						}
-					}
-				/>
-				<p>Currently viewing - {todosVisibility} </p>
-				<TodoList
-					todos={todos}
-					onChangeHandler={
-						(todoId) => {
-							this.props.actions.toggleTodo(todoId)
-						}
-					}
-					todosVisibility={todosVisibility}
-				/>
-				<TodoFooter
-					onClickHandler={(value)=>{
-						this.props.actions.setTodosVisibilty(value)
-					}}
-				/>
+			<div id='todo-wrapper' className='container'>
+				<div className="row">
+					<div id='todo-app-output' className="col-md-offset-3 col-md-6">
+						<h1>To-do App</h1>
+						<TodoForm
+							submitHandler={
+								(value)=>{
+									this.props.actions.addTodo(value)
+								}
+							}
+						/>
+						<p>Currently viewing - {todosVisibility} </p>
+						<TodoList
+							todos={todos}
+							onChangeHandler={
+								(todoId) => {
+									this.props.actions.toggleTodo(todoId)
+								}
+							}
+							todosVisibility={todosVisibility}
+						/>
+						<TodoFooter
+							onClickHandler={(value)=>{
+								this.props.actions.setTodosVisibilty(value)
+							}}
+						/>
+					</div>
+				</div>
 			</div>
 		)
 	}
