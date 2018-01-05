@@ -4,24 +4,39 @@ import {compare} from 'alphanumeric-sort'
 import TodoItem from './TodoItem'
 
 const TodoList = ({todos, onChangeHandler, todosVisibility}) => {
-	// sort todos by completed status and then alphanumerically
-	let sortedTodos = todos.sort((a,b) => {
+
+	// sort by completed status and then alphanumerically
+	let sortCompleteAndAlphanum = (a,b) => {
 		if(a.completed && !b.completed) return 1
 		if(b.completed && !a.completed) return -1
 		return compare(a.text.toLowerCase(), b.text.toLowerCase())
-	})
+	}
+
+	// filter by a user-selected status of todos
+	let filterBySelectedVisibility = (item) => {
+		let completedStatusSort = null
+
+		switch(todosVisibility) {
+			case 'completed':
+				completedStatusSort = true
+				break
+			case 'todo':
+				completedStatusSort = false
+				break
+			default:
+				break
+		}
+
+		if(completedStatusSort === item.completed || completedStatusSort === null){
+			return true
+		}
+	}
+
+	let cleanedTodos = todos.sort(sortCompleteAndAlphanum).filter(filterBySelectedVisibility)
 
 	// build output
-	let output = sortedTodos.map(
+	let output = cleanedTodos.map(
 		(item) => {
-
-			if(todosVisibility == 'completed' && item.completed == false){
-				return false
-			}
-
-			if(todosVisibility == 'todo' && item.completed == true){
-				return false
-			}
 
 			return (
 				<TodoItem
