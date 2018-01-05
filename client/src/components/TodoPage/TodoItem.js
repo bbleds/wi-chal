@@ -1,9 +1,9 @@
 import React from 'react'
 
-const TodoItem = ({text}) => {
+const TodoItem = ({text, checkable}) => {
 	return(
 		<li>
-			<input type="checkbox"/>
+			{ checkable ? <input type="checkbox" /> : '' }
 			<span>{text}</span>
 		</li>
 	)

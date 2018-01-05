@@ -1,4 +1,7 @@
-let initialState = []
+import * as handlers from '../services/todoHandler'
+
+let initialState = handlers.getTodos()
+console.log(initialState);
 
 export default function todoReducer(state = initialState, action) {
 
