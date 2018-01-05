@@ -37,7 +37,6 @@ const TodoList = ({todos, onChangeHandler, todosVisibility}) => {
 	// build output
 	let output = cleanedTodos.map(
 		(item) => {
-
 			return (
 				<TodoItem
 					data={item}

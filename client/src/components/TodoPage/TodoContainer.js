@@ -28,7 +28,6 @@ class TodoContainer extends Component{
 					todos={todos}
 					onChangeHandler={
 						(todoId) => {
-							console.log('calling the toggleTodo');
 							this.props.actions.toggleTodo(todoId)
 						}
 					}
