@@ -14,5 +14,5 @@ A simple to-do application utilitizing localStorage for persistent data and buil
   5. You can now navigate to ```localhost:4000``` in your favorite browser and manage your to-dos as needed!
   
   # Online Demo
-  Feel free to take a test drive here!
+  Feel free to take a test drive [here](http://bbledsoe.io/react-redux-todos)!
   
