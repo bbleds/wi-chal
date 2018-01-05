@@ -1,15 +1,19 @@
+import uuid from 'uuid'
 import initialState from '../store/initialState'
 
 const applicationStateKey = 'todo-app-state'
 
-// retrive entire application state
+// retrive entire application state from data storage
 export let getState = () => {
 	let existingState = JSON.parse(window.localStorage.getItem(applicationStateKey))
 	return existingState || initialState
 }
 
-// handles persiting a todo
+// handles persiting a todo into data storage
 export let addTodo = (todo) => {
+	// append new todoId
+	todo.todoId = uuid()
+
 	let state = getState()
 	let todos = state.todos.concat(todo)
 	let newState = {
@@ -18,4 +22,31 @@ export let addTodo = (todo) => {
 	}
 
 	window.localStorage.setItem(applicationStateKey, JSON.stringify(newState))
+
+	return todo
+}
+
+// toggles a todo's "completed" property and saves it into data storage
+export let toggleTodo = (todoId) => {
+	let todos = getState().todos
+
+	todos = todos.map((item)=>{
+
+		 if(item.todoId == todoId){
+			 item.completed = !item.completed
+		 }
+
+		 return item
+	})
+
+	let state = getState()
+	state.todos = todos
+	let newState = {
+		...state,
+		todos
+	}
+
+	window.localStorage.setItem(applicationStateKey, JSON.stringify(newState))
+
+	return todoId
 }

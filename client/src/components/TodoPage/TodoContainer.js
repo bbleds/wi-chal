@@ -16,7 +16,7 @@ class TodoContainer extends Component{
 
 		return(
 			<div>
-				<h1>All Todo elements are contained within!</h1>
+				<h1>To-do Manager</h1>
 				<TodoForm
 					submitHandler={
 						(value)=>{
@@ -24,7 +24,15 @@ class TodoContainer extends Component{
 						}
 					}
 				/>
-			<TodoList todos={todos}/>
+				<TodoList
+					todos={todos}
+					onChangeHandler={
+						(todoId) => {
+							console.log('calling the toggleTodo');
+							this.props.actions.toggleTodo(todoId)
+						}
+					}
+				/>
 				<TodoFooter/>
 			</div>
 		)

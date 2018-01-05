@@ -9,14 +9,15 @@ const TodoForm = ({submitHandler}) => {
 	}
 
 	return(
-		<form>
+		<div>
 			<input
 				type='text'
 				placeholder="Enter a todo..."
 				ref={ (node)=> todoInput = node }
 				onKeyUp={(e)=>{ e.key.toLowerCase() === 'enter' ? (console.log('submit was called'), submit()) : false}}
 			/>
-		</form>
+		<button onClick={ () => submit() }>Add</button>
+		</div>
 	)
 }
 
