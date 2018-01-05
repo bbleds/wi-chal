@@ -1,5 +1,3 @@
-import * as handlers from '../services/todoHandler'
-
 export default function todoReducer(state = [], action) {
 
   switch (action.type) {
