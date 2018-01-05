@@ -11,11 +11,20 @@ import TodoFooter from './TodoFooter'
 
 class TodoContainer extends Component{
 	render(){
+		let { todos } = this.props
+		console.log(todos)
+
 		return(
 			<div>
 				<h1>All Todo elements are contained within!</h1>
-				<TodoForm/>
-				<TodoList/>
+				<TodoForm
+					submitHandler={
+						(value)=>{
+							this.props.actions.addTodo(value)
+						}
+					}
+				/>
+			<TodoList todos={todos}/>
 				<TodoFooter/>
 			</div>
 		)

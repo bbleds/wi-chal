@@ -1,10 +1,10 @@
 import React from 'react'
 
-const TodoItem = () => {
+const TodoItem = ({text}) => {
 	return(
 		<li>
 			<input type="checkbox"/>
-			<span>A Single todo item in a list of todos</span>
+			<span>{text}</span>
 		</li>
 	)
 }

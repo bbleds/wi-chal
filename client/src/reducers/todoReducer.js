@@ -1,12 +1,16 @@
-let initialState = {
-	data : []
-}
+let initialState = []
 
 export default function todoReducer(state = initialState, action) {
 
   switch (action.type) {
-    case 'SOME_TODO_ACTION':
-      return state
+    case 'ADD_TODO':
+      return [
+				...state,
+				{
+					text: action.text,
+					completed: false
+				}
+			]
     default:
       return state
   }
