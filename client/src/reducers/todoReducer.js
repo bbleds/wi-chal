@@ -1,6 +1,7 @@
 export default function todoReducer(state = [], action) {
 
   switch (action.type) {
+
     case 'ADD_TODO':
       return [
 				...state,
@@ -10,8 +11,17 @@ export default function todoReducer(state = [], action) {
 					completed: false
 				}
 			]
+
 		case 'TOGGLE_TODO':
-			return state
+			let newState = state.map((item) => {
+				if(item.todoId == action.todoId){
+					item.completed = !item.completed
+				}
+
+				return item
+			})
+			return newState
+
     default:
       return state
   }

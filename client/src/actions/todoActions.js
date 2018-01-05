@@ -24,3 +24,15 @@ export function toggleTodo(todoId) {
     })
   }
 }
+
+export function setTodosVisibilty(value) {
+
+	// let todo = api.toggleTodo(todoId)
+
+  return function (dispatch) {
+    return dispatch({
+      type: 'SET_TODO_VISIBILITY',
+			todosVisibility: value
+    })
+  }
+}

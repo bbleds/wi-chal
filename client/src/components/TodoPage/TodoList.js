@@ -2,10 +2,18 @@ import React from 'react'
 import TodoItem from './TodoItem'
 import uuid from 'uuid'
 
-const TodoList = ({todos, onChangeHandler}) => {
-console.log('todos', todos);
+const TodoList = ({todos, onChangeHandler, todosVisibility}) => {
 	let output = todos.map(
 		(item) => {
+
+			if(todosVisibility == 'completed' && item.completed == false){
+				return false
+			}
+
+			if(todosVisibility == 'todo' && item.completed == true){
+				return false
+			}
+
 			return (
 				<TodoItem
 					data={item}

@@ -1,11 +1,14 @@
 import React from 'react'
 
-const TodoFooter = () => {
+const TodoFooter = ({onClickHandler}) => {
+
 	return(
 		<div>
-			<a href="#">All</a>
+			<a href="#" onClick={ () => { onClickHandler('all') }}>all</a>
 			{' | '}
-			<a href="#">Completed</a>
+			<a href="#" onClick={ () => { onClickHandler('completed') }} >completed</a>
+			{' | '}
+			<a href="#" onClick={ () => { onClickHandler('todo') }}>todo</a>
 		</div>
 	)
 }

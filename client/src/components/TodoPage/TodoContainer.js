@@ -11,8 +11,7 @@ import TodoFooter from './TodoFooter'
 
 class TodoContainer extends Component{
 	render(){
-		let { todos } = this.props
-		console.log(todos)
+		let { todos, todosVisibility, state } = this.props
 
 		return(
 			<div>
@@ -24,6 +23,7 @@ class TodoContainer extends Component{
 						}
 					}
 				/>
+				<p>Currently viewing - {todosVisibility} </p>
 				<TodoList
 					todos={todos}
 					onChangeHandler={
@@ -32,8 +32,13 @@ class TodoContainer extends Component{
 							this.props.actions.toggleTodo(todoId)
 						}
 					}
+					todosVisibility={todosVisibility}
 				/>
-				<TodoFooter/>
+				<TodoFooter
+					onClickHandler={(value)=>{
+						this.props.actions.setTodosVisibilty(value)
+					}}
+				/>
 			</div>
 		)
 	}
@@ -41,7 +46,9 @@ class TodoContainer extends Component{
 
 function mapStateToProps(state) {
   return {
-    todos: state.todos
+    todos: state.todos,
+		todosVisibility: state.todosVisibility,
+		state
   };
 }
 
