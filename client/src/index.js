@@ -1,6 +1,5 @@
 import React from 'react'
 import {render} from 'react-dom'
-import domready from 'domready'
 import Root from './components/Root'
 import configureStore from './store/configureStore'
 import * as api from './api/database'
@@ -10,7 +9,7 @@ import './styles/index.scss'
 const store = configureStore(api.getStorage())
 
 // render application to page
-domready(() => {
+window.addEventListener('load', () => {
 	render(
 		<div>
 			<Root store={store} />
