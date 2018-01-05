@@ -3,6 +3,11 @@ import initialState from '../store/initialState'
 
 const applicationStateKey = 'todo-app-state'
 
+let saveStorage = (data) => {
+	window.localStorage.setItem(applicationStateKey, JSON.stringify(newState))
+}
+
+
 // retrive entire application state from data storage
 export let getStorage = () => {
 	let existingState = JSON.parse(window.localStorage.getItem(applicationStateKey))
@@ -49,4 +54,10 @@ export let toggleTodo = (todoId) => {
 	window.localStorage.setItem(applicationStateKey, JSON.stringify(newState))
 
 	return todoId
+}
+
+export let setTodosVisibilty = (value) => {
+	let newState = getStorage()
+	newState.todosVisibility = value
+	window.localStorage.setItem(applicationStateKey, JSON.stringify(newState))
 }

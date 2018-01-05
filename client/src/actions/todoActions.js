@@ -27,7 +27,7 @@ export function toggleTodo(todoId) {
 
 export function setTodosVisibilty(value) {
 
-	// let todo = api.toggleTodo(todoId)
+	let success = api.setTodosVisibilty(value)
 
   return function (dispatch) {
     return dispatch({
