@@ -3,7 +3,19 @@ import initialState from '../store/initialState'
 
 const applicationStateKey = 'todo-app-state'
 
-let saveStorage = data =>  window.localStorage.setItem(applicationStateKey, JSON.stringify(data))
+let saveStorage = data =>  {
+	try { window.localStorage.setItem(applicationStateKey, JSON.stringify(data)) }
+	catch(err) { return false }
+	return true
+}
+
+let returnData = (data, msg, errors = false) => {
+	return {
+		data,
+		msg,
+		errors
+	}
+}
 
 // handles retrieving application state from data storage
 export let getStorage = () => {
@@ -19,9 +31,10 @@ export let addTodo = todo => {
 	let newState = getStorage()
 	let todos = newState.todos.concat(todo)
 	newState.todos = todos
-	saveStorage(newState)
+	let success = saveStorage(newState)
+	let data = success ? returnData(todo, 'added todo successfully') : returnData(todo, 'an error occurred', true)
 
-	return todo
+	return data
 }
 
 // handles toggling a todo's "completed" property and saves it into data storage
@@ -35,16 +48,18 @@ export let toggleTodo = todoId => {
 	})
 
 	newState.todos = todos
-	saveStorage(newState)
+	let success = saveStorage(newState)
+	let data = success ? returnData(todoId, 'toggled todo successfully') : returnData(todoId, 'an error occurred', true)
 
-	return todoId
+	return data
 }
 
 // handles setting the todos visibility by a user-selected filter
 export let setTodosVisibilty = value => {
 	let newState = getStorage()
 	newState.todosVisibility = value
-	saveStorage(newState)
+	let success = saveStorage(newState)
+	let data = success ? returnData(value, 'set visibility successfully') : returnData(value, 'an error occurred', true)
 
-	return true
+	return data
 }

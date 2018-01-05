@@ -2,7 +2,7 @@ import * as api from '../api/database'
 
 export function addTodo(todoText) {
 
-	let todo = api.addTodo({text: todoText, completed: false})
+	let { todo } = api.addTodo({text: todoText, completed: false})
 
   return function (dispatch) {
     return dispatch({
