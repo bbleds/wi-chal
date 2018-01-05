@@ -16,7 +16,7 @@ console.log('todos', todos);
 		)}
 	)
 
-	output = output.length ? output : (<TodoItem  checkable={false} text={'No todo items available'}/>)
+	output = output.length ? output : (<TodoItem  checkable={false} data={{text:'No todo items available'}}/>)
 
 	return(
 		<ul>
