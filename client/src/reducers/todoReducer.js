@@ -1,4 +1,6 @@
-export default function todoReducer(state = [], action) {
+import initialState from '../store/initialState'
+
+export default function todoReducer(state = initialState.todos, action) {
 
   switch (action.type) {
 
@@ -13,14 +15,10 @@ export default function todoReducer(state = [], action) {
 			]
 
 		case 'TOGGLE_TODO':
-			let newState = state.map((item) => {
-				if(item.todoId == action.todoId){
-					item.completed = !item.completed
-				}
-
+			return state.map( item => {
+				if(item.todoId == action.todoId) item.completed = !item.completed
 				return item
 			})
-			return newState
 
     default:
       return state

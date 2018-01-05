@@ -26,52 +26,6 @@ $sleek-red: #FF3b3F;
 	cursor: pointer;
 }
 
-#todo-wrapper{
-	margin-top: 100px;
-	@media screen and (max-width: 960px) {
-		margin-top: 0px;
-	}
-}
-
-#todo-app-output{
-	overflow: hidden;
-	border: $light-border;
-	border-radius: 7px;
-	text-align: center;
-	padding: 0px;
-	box-shadow: 5px 5px 20px 3px rgba(0,0,0,.1);
-	padding-bottom: 25px;
-	@extend .subtle-text;
-
-	h1{
-		margin: 0px;
-		padding: 20px;
-		background-color: $sleek-red;
-		font-weight: lighter;
-		color: white
-	}
-
-	a{
-		text-decoration: none;
-		color: $carbon;
-	}
-
-	#todo-input-form{
-		width: 70%;
-		margin-left: 15%;
-		padding: 20px;
-		padding-bottom: 5px;
-
-		.input-group-addon{
-			background-color: whitesmoke;
-		}
-
-		span{
-			cursor: pointer;
-		}
-	}
-}
-
 .todo-list{
 	list-style: none;
 	padding: 0px;
@@ -117,6 +71,52 @@ $sleek-red: #FF3b3F;
 	.completed-task{
 		span{
 			text-decoration: line-through;
+		}
+	}
+}
+
+#todo-wrapper{
+	margin-top: 100px;
+	@media screen and (max-width: 960px) {
+		margin-top: 0px;
+	}
+}
+
+#todo-app-output{
+	overflow: hidden;
+	border: $light-border;
+	border-radius: 7px;
+	text-align: center;
+	padding: 0px;
+	box-shadow: 5px 5px 20px 3px rgba(0,0,0,.1);
+	padding-bottom: 25px;
+	@extend .subtle-text;
+
+	h1{
+		margin: 0px;
+		padding: 20px;
+		background-color: $sleek-red;
+		font-weight: lighter;
+		color: white
+	}
+
+	a{
+		text-decoration: none;
+		color: $carbon;
+	}
+
+	#todo-input-form{
+		width: 70%;
+		margin-left: 15%;
+		padding: 20px;
+		padding-bottom: 5px;
+
+		.input-group-addon{
+			background-color: whitesmoke;
+		}
+
+		span{
+			cursor: pointer;
 		}
 	}
 }

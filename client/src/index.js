@@ -7,10 +7,9 @@ import * as api from './api/database'
 import '../../node_modules/bootstrap/dist/css/bootstrap.css'
 import './styles/index.scss'
 
-let initialState = api.getStorage()
-const store = configureStore(initialState)
+const store = configureStore(api.getStorage())
 
-// render application to page once dom loaded
+// render application to page
 domready(() => {
 	render(
 		<div>

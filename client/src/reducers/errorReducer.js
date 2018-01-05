@@ -1,4 +1,6 @@
-export default function errorReducer(state = { hasError : false, msg: '' }, action) {
+import initialState from '../store/initialState'
+
+export default function errorReducer(state = initialState.errors, action) {
 
   switch (action.type) {
 

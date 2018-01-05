@@ -1,4 +1,6 @@
-export default function todosVisibilityReducer(state = 'all', action) {
+import initialState from '../store/initialState'
+
+export default function todosVisibilityReducer(state = initialState.todosVisibility, action) {
 
   switch (action.type) {
 

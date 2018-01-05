@@ -31,8 +31,7 @@ const TodoList = ({todos, onChangeHandler, todosVisibility}) => {
 	}
 
 	// filter, sort, and build output
-	let output = todos.filter(filterBySelectedVisibility).sort(sortCompleteAndAlphanum).map(
-		(item) => {
+	let output = todos.filter(filterBySelectedVisibility).sort(sortCompleteAndAlphanum).map( item => {
 			return (
 				<TodoItem
 					data={item}
@@ -44,7 +43,7 @@ const TodoList = ({todos, onChangeHandler, todosVisibility}) => {
 	)
 
 	// show default message if no todos are found
-	output = output.length ? output : (<TodoItem  checkable={false} data={{text:'No todo items available'}}/>)
+	output = output.length ? output : (<TodoItem  checkable={false} data={{text:'No to-do items available'}}/>)
 
 	return(
 		<ul className='todo-list'>
