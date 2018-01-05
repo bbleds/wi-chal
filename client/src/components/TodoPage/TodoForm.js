@@ -14,9 +14,9 @@ const TodoForm = ({submitHandler}) => {
 				type='text'
 				placeholder="Enter a todo..."
 				ref={ (node)=> todoInput = node }
-				onKeyUp={(e)=>{ e.key.toLowerCase() === 'enter' ? (console.log('submit was called'), submit()) : false}}
+				onKeyUp={(e)=>{ e.key.toLowerCase() === 'enter' ? ( submit() ) : false}}
 			/>
-		<button onClick={ () => submit() }>Add</button>
+			<button onClick={ () => submit() }>Add</button>
 		</div>
 	)
 }
