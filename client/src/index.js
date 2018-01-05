@@ -2,15 +2,15 @@
 import React from 'react'
 import {render} from 'react-dom'
 import Root from './components/Root'
+import configureStore from './store/configureStore'
 
-// initialize our application store
-// pass our store into our app
-// handle create todos toggle todos actions
+
+const store = configureStore()
 
 // render application to page
 render(
 	<div>
-		<Root />
+		<Root store={store} />
 	</div>,
 	document.getElementById('app')
 )
