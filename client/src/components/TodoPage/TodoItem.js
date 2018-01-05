@@ -5,13 +5,16 @@ const TodoItem = ({ data, checkable, onChangeHandler}) => {
 		onChangeHandler(todoId)
 	}
 
+	let currentClass = data.completed ? 'completed-task' : ''
+
 	return(
-		<li>
+		<li className={currentClass}>
 			<label>
 				{
 					checkable ? <input type="checkbox" onChange={()=> handleChange(data.todoId) } defaultChecked={data.completed} /> : ''
 				}
-				<span> {data.text} </span>
+				<span> {data.text}</span>
+				<span className='subtle-complete'>{ data.completed ? ' - completed' : ''}</span>
 			</label>
 		</li>
 	)

@@ -77,6 +77,11 @@ $light-border: 1px solid rgba(0,0,0,.06);
 		label{
 			padding: 20px;
 			width: 100%;
+
+			.subtle-complete{
+				text-decoration: none;
+				@extend .subtle-text;
+			}
 		}
 
 		input{
@@ -85,6 +90,12 @@ $light-border: 1px solid rgba(0,0,0,.06);
 
 		span{
 			font-weight: lighter;
+		}
+	}
+
+	.completed-task{
+		span{
+			text-decoration: line-through;
 		}
 	}
 }
