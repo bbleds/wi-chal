@@ -28,8 +28,8 @@ class TodoContainer extends Component{
 	}
 
 	render(){
-		let { todos, todosVisibility, errors } = this.props
-		
+		const { todos, todosVisibility, errors } = this.props
+
 		return(
 			<div>
 				{

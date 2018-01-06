@@ -3,10 +3,10 @@ import React from 'react'
 const TodoForm = ({submitHandler, errorHandler}) => {
 	let todoInput
 
-	let validateInput = value => !value.length ? false : true
+	const validateInput = value => !value.length ? false : true
 
-	let submit = () => {
-		let value = todoInput.value.trim()
+	const submit = () => {
+		const value = todoInput.value.trim()
 
 		if(!validateInput(value)){
 			errorHandler('Oops! You cannot create an empty to-do. Please try again.')
