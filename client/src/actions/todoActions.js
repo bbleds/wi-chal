@@ -4,20 +4,17 @@ import * as api from '../api/database'
 
 // handles adding a new todo and persisting to storage
 export function addTodo(todoText){
-	let { data, errors } = api.addTodo({text: todoText, completed: false})
+	const { data, errors } = api.addTodo({text: todoText, completed: false})
 
 	if( errors ) return generateError('An error occurred when adding a to-do. Please try again.')
-
-	let todo = data
 
 	return function (dispatch) {
 		return dispatch({
 			type: 'ADD_TODO',
-			text: todo.text,
-			todoId : todo.todoId
+			text: data.text,
+			todoId : data.todoId
 		})
 	}
-
 }
 
 // handles toggling the completed property of a single todo item by id
