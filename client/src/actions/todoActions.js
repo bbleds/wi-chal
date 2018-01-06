@@ -19,7 +19,7 @@ export function addTodo(todoText){
 
 // handles toggling the completed property of a single todo item by id
 export function toggleTodo(todoId) {
-	let { errors } = api.toggleTodo(todoId)
+	const { errors } = api.toggleTodo(todoId)
 
 	if( errors ) return generateError('An error occurred when changing the status of a to-do. Please try again.')
 
@@ -33,7 +33,8 @@ export function toggleTodo(todoId) {
 
 // handles filtering the viewable todos by user-selected filter
 export function setTodosVisibilty(value) {
-	let { errors } = api.setTodosVisibilty(value)
+	
+	const { errors } = api.setTodosVisibilty(value)
 
 	if( errors ) return generateError('Oops! An error occurred when filtering your to-do items. Please try again.')
 
