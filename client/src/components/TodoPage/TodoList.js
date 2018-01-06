@@ -6,14 +6,14 @@ import TodoItem from './TodoItem'
 const TodoList = ({todos, onChangeHandler, todosVisibility}) => {
 
 	// custom compare function to sort by "completed" status and then alphanumerically
-	let sortCompleteAndAlphanum = (a,b) => {
+	const sortCompleteAndAlphanum = (a,b) => {
 		if(a.completed && !b.completed) return 1
 		if(b.completed && !a.completed) return -1
 		return compare(a.text.toLowerCase(), b.text.toLowerCase())
 	}
 
 	// custom function to filter todos by user-selected "completed" status
-	let filterBySelectedVisibility = item => {
+	const filterBySelectedVisibility = item => {
 		let completedStatusSort = null
 
 		switch(todosVisibility) {

@@ -1,9 +1,9 @@
 import React from 'react'
 
 const TodoItem = ({ data, checkable, onChangeHandler}) => {
-	let handleChange = todoId => onChangeHandler(todoId)
+	const handleChange = todoId => onChangeHandler(todoId)
 
-	let currentClass = data.completed ? 'completed-task' : ''
+	const currentClass = data.completed ? 'completed-task' : ''
 
 	return(
 		<li className={currentClass}>
