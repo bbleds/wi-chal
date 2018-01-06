@@ -31,7 +31,7 @@ export const getStorage = () => {
 
 // handles persiting a todo into data storage
 export const addTodo = todo => {
-	
+
 	const state = getStorage()
 	const newTodo = {...todo, todoId: uuid()}
 	const newState = {...state, todos: [ ...state.todos, newTodo ] }
@@ -43,18 +43,18 @@ export const addTodo = todo => {
 
 // handles toggling a todo's "completed" property and updating data storage
 export let toggleTodo = todoId => {
-	let newState = getStorage()
-	const todos = newState.todos
 
-	newState.todos = todos.map( item => {
-		 if (item.todoId == todoId) item.completed = !item.completed
-		 return item
-	})
+	const state = getStorage()
+	const newState = { ...state,
+		todos : state.todos.map(x => {
+			if (x.todoId == todoId) x.completed = !x.completed
+			return x
+		})
+	}
 
-	const success = saveStorage(newState)
-	const data = success ? returnData(todoId, 'toggled todo successfully') : returnData(todoId, 'an error occurred', true)
-
-	return data
+	return saveStorage(newState) ?
+		returnData(todoId, 'toggled todo successfully') :
+		returnData(todoId, 'an error occurred', true)
 }
 
 // handles setting the todos visibility by a user-selected filter
