@@ -58,11 +58,12 @@ export let toggleTodo = todoId => {
 }
 
 // handles setting the todos visibility by a user-selected filter
-export let setTodosVisibilty = value => {
-	let newState = getStorage()
-	newState.todosVisibility = value
-	let success = saveStorage(newState)
-	let data = success ? returnData(value, 'set visibility successfully') : returnData(value, 'an error occurred', true)
+export let setTodosVisibilty = val => {
+	
+	const state = getStorage()
+	const newState = {...state, todosVisibility: val}
 
-	return data
+	return saveStorage(newState) ?
+		returnData(val, 'set visibility successfully') :
+		returnData(val, 'an error occurred')
 }
