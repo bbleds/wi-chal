@@ -6,14 +6,14 @@ const applicationStateKey = 'todo-app-state'
 // ** Local Functions **
 
 // this will serialize data and persist to localStorage
-let saveStorage = data =>  {
+const saveStorage = data =>  {
 	try { window.localStorage.setItem(applicationStateKey, JSON.stringify(data)) }
 	catch(err) { return false }
 	return true
 }
 
 // utility function for common return types
-let returnData = (data, msg, errors = false) => {
+const returnData = (data, msg, errors = false) => {
 	return {
 		data,
 		msg,
@@ -24,37 +24,35 @@ let returnData = (data, msg, errors = false) => {
 // ** Export Methods **
 
 // handles retrieving application state from data storage
-export let getStorage = () => {
-	let existingState = JSON.parse(window.localStorage.getItem(applicationStateKey))
+export const getStorage = () => {
+	const existingState = JSON.parse(window.localStorage.getItem(applicationStateKey))
 	return existingState || initialState
 }
 
 // handles persiting a todo into data storage
-export let addTodo = todo => {
+export const addTodo = todo => {
+	
+	const state = getStorage()
+	const newTodo = {...todo, todoId: uuid()}
+	const newState = {...state, todos: [ ...state.todos, newTodo ] }
 
-	todo.todoId = uuid()
-
-	let newState = getStorage()
-	let todos = newState.todos.concat(todo)
-	newState.todos = todos
-	let success = saveStorage(newState)
-	let data = success ? returnData(todo, 'added todo successfully') : returnData(todo, 'an error occurred', true)
-
-	return data
+	return saveStorage(newState) ?
+		returnData(newTodo, 'added todo successfully') :
+		returnData(newTodo, 'an error occurred', true)
 }
 
 // handles toggling a todo's "completed" property and updating data storage
 export let toggleTodo = todoId => {
 	let newState = getStorage()
-	let todos = newState.todos
+	const todos = newState.todos
 
 	newState.todos = todos.map( item => {
 		 if (item.todoId == todoId) item.completed = !item.completed
 		 return item
 	})
 
-	let success = saveStorage(newState)
-	let data = success ? returnData(todoId, 'toggled todo successfully') : returnData(todoId, 'an error occurred', true)
+	const success = saveStorage(newState)
+	const data = success ? returnData(todoId, 'toggled todo successfully') : returnData(todoId, 'an error occurred', true)
 
 	return data
 }
