@@ -1,5 +1,5 @@
 # React/Redux To-dos
-A simple to-do application utilitizing localStorage for persistent data and built via React/Redux. All actions for the [FSA](https://github.com/acdlite/flux-standard-action) pattern.
+A simple to-do application utilitizing localStorage for persistent data and built via React/Redux. All actions follow the [FSA](https://github.com/acdlite/flux-standard-action) pattern.
 
 # MVP
  1. As a user I can add an item to a list of "to-dos".
