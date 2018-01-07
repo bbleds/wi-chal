@@ -32,7 +32,7 @@ export const getStorage = () => {
 export const addTodo = todo => {
 
 	const state = getStorage()
-	const newTodo = {...todo, todoId: uuid()}
+	const newTodo = {...todo, todoId: uuid() }
 	const newState = {...state, todos: [ ...state.todos, newTodo ] }
 
 	return saveStorage(newState) ?
@@ -64,5 +64,5 @@ export let setTodosVisibilty = val => {
 
 	return saveStorage(newState) ?
 		returnData(val, 'set visibility successfully') :
-		returnData(val, 'an error occurred')
+		returnData(val, 'an error occurred', true)
 }
