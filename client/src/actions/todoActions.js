@@ -1,4 +1,5 @@
 import * as api from '../api/database'
+import * as types from '../constants'
 
 // ** Export Methods **
 
@@ -6,7 +7,7 @@ import * as api from '../api/database'
 export function addTodo(todoText){
 	return function (dispatch) {
 		return dispatch({
-			type: 'ADD_TODO',
+			type: types.ADD_TODO,
 			payload: todoText
 		})
 	}
@@ -17,7 +18,7 @@ export function addTodo(todoText){
 export function toggleTodo(todoId){
 	return function (dispatch) {
 		return dispatch({
-			type: 'TOGGLE_TODO',
+			type: types.TOGGLE_TODO,
 			payload: todoId
 		})
 	}
@@ -27,7 +28,7 @@ export function toggleTodo(todoId){
 export function setTodosVisibilty(val){
 	return function (dispatch) {
 		return dispatch({
-			type: 'SET_TODOS_VISIBILITY',
+			type: types.SET_TODOS_VISIBILITY,
 			payload: val
 		})
 	}
@@ -37,7 +38,7 @@ export function setTodosVisibilty(val){
 export function generateError(msg) {
   return function (dispatch) {
     return dispatch({
-      type: 'GENERATE_ERROR_SUCCESS',
+      type: types.GENERATE_ERROR,
 			payload: msg
     })
   }
@@ -47,7 +48,7 @@ export function generateError(msg) {
 export function cleanErrors(value) {
   return function (dispatch) {
     return dispatch({
-      type: 'CLEAN_ERRORS_SUCCESS'
+      type: 'CLEAN_ERRORS'
     })
   }
 }

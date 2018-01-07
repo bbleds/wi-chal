@@ -1,9 +1,10 @@
 import { createLogic } from 'redux-logic'
 import * as api from '../api/database'
+import * as types from '../constants'
 import uuid from 'uuid'
 
 const addTodoLogic = createLogic({
-	type: 'ADD_TODO',
+	type: types.ADD_TODO,
 	process({ getState, action }, dispatch, done){
 		const { payload } = action
 		const { data, errors } = api.addTodo({text: payload , completed: false})
@@ -24,7 +25,7 @@ const addTodoLogic = createLogic({
 })
 
 const toggleTodoLogic = createLogic({
-	type: 'TOGGLE_TODO',
+	type: types.TOGGLE_TODO,
 	process({ getState, action }, dispatch, done){
 		const { payload } = action
 		const { errors } = api.toggleTodo(payload)

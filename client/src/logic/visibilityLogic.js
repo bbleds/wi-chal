@@ -1,8 +1,9 @@
 import { createLogic } from 'redux-logic'
 import * as api from '../api/database'
+import * as types from '../constants'
 
 const visibilityLogic = createLogic({
-	type: 'SET_TODOS_VISIBILITY',
+	type: types.SET_TODOS_VISIBILITY,
 	process({ getState, action }, dispatch, done){
 
     const { payload } = action
@@ -10,11 +11,11 @@ const visibilityLogic = createLogic({
 
 		!errors ?
 			dispatch({
-			  type: 'SET_TODOS_VISIBILITY_SUCCESS',
+			  type: types.SET_TODOS_VISIBILITY_SUCCESS,
 				todosVisibility: payload
 			}) :
 			dispatch({
-				type: 'GENERATE_ERROR',
+				type: types.GENERATE_ERROR,
 				payload: 'Oops! An error occurred when filtering your to-do items. Please try again.'
 			})
 
