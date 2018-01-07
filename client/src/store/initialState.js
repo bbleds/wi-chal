@@ -2,7 +2,8 @@
 const initialState = {
 	todos: [],
 	todosVisibility: 'all',
-	errors: { hasError : false, msg: '' }
+	errors: { hasError : false, msg: '' },
+	formFieldValues: { TodoForm : { addTodoInput : '' } }
 }
 
 export default initialState

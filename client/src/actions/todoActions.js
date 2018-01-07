@@ -45,10 +45,29 @@ export function generateError(msg) {
 }
 
 // general usage for clearing existing errors
-export function cleanErrors(value) {
+export function cleanErrors() {
   return function (dispatch) {
     return dispatch({
-      type: 'CLEAN_ERRORS'
+      type: types.CLEAN_ERRORS
+    })
+  }
+}
+
+// used to set an input field value on state
+export function setTodoFormInputValue(val, field) {
+  return function (dispatch) {
+    return dispatch({
+      type: types.SET_ADD_TODO_INPUT,
+			payload: { val, field }
+    })
+  }
+}
+
+// used to set an input field value on state
+export function clearFormInputs() {
+  return function (dispatch) {
+    return dispatch({
+      type: types.CLEAR_ADD_TODO_INPUTS
     })
   }
 }

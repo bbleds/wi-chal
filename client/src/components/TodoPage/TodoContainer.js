@@ -10,13 +10,18 @@ import TodoForm from './TodoForm'
 import TodoFooter from './TodoFooter'
 
 class TodoContainer extends Component{
-	handleFormSubmit(value){
+	handleFormSubmit(val){
 		this.props.actions.cleanErrors()
-		this.props.actions.addTodo(value)
+		this.props.actions.clearFormInputs()
+		this.props.actions.addTodo(val)
 	}
 
 	handleFormSubmitError(msg){
 		this.props.actions.generateError(msg)
+	}
+
+	handleInputChange(val, field){
+		this.props.actions.setTodoFormInputValue(val, field)
 	}
 
 	handleToggleTodo(todoId){
@@ -28,7 +33,7 @@ class TodoContainer extends Component{
 	}
 
 	render(){
-		const { todos, todosVisibility, errors } = this.props
+		const { todos, todosVisibility, errors, formValues, state } = this.props
 
 		return(
 			<div>
@@ -44,8 +49,10 @@ class TodoContainer extends Component{
 						<div id='todo-app-output' className="col-md-offset-3 col-md-6">
 							<h1>To-do App</h1>
 							<TodoForm
-								submitHandler={ value => this.handleFormSubmit(value) }
+								submitHandler={ val => this.handleFormSubmit(val) }
 								errorHandler={ msg => this.handleFormSubmitError(msg) }
+								onChangeHandler={ (val, field) => this.handleInputChange(val, field) }
+								formValues={formValues}
 							/>
 							<p>Currently viewing - {todosVisibility} </p>
 							<TodoList
@@ -70,8 +77,9 @@ function mapStateToProps(state) {
     todos: state.todos,
 		todosVisibility: state.todosVisibility,
 		errors: state.errors,
+		formValues: state.formFieldValues.TodoForm,
 		state
-  };
+  }
 }
 
 // this allows us to create custom actions and inject additional functionality before dispatching final redux actions

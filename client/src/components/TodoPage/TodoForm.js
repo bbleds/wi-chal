@@ -3,15 +3,15 @@ import React, {Component} from 'react'
 export default class TodoForm extends Component{
 
 	submit(){
-		const val = this.todoInput.value.trim()
+		const val = this.props.formValues.addTodoInput.trim()
 
 		val.length ?
-			(this.props.submitHandler(val), this.todoInput.value = '') :
+			this.props.submitHandler(val) :
 			this.props.errorHandler('Oops! You cannot create an empty to-do. Please try again.')
 	}
 
 	render() {
-		const {submitHandler, errorHandler} = this.props
+		const {submitHandler, errorHandler, onClickHandler, onChangeHandler, formValues } = this.props
 
 		return(
 			<div id="todo-input-form" className="input-group">
@@ -19,8 +19,9 @@ export default class TodoForm extends Component{
 					className="form-control"
 					type='text'
 					placeholder="Enter a todo..."
-					ref={ node => this.todoInput = node }
+					value={ formValues.addTodoInput }
 					onKeyUp={ e => e.key.toLowerCase() === 'enter' && this.submit() }
+					onChange={ (e) => onChangeHandler(e.target.value, 'addTodoInput') }
 					aria-describedby="todo-input-addon"
 				/>
 				<span
