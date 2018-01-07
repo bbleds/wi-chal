@@ -33,12 +33,11 @@ class TodoContainer extends Component{
 		return(
 			<div>
 				{
-					errors.hasError ?
-						(<div className='error-message'>
+					errors.hasError &&
+						<div className='error-message'>
 							<span>{ errors.msg }</span>
-							<span className="clear-error" onClick={()=>{ this.props.actions.cleanErrors()}}>close</span>
-						</div>) :
-						''
+							<span className="clear-error" onClick={ () => this.props.actions.cleanErrors() }>close</span>
+						</div>
 				}
 				<div id='todo-wrapper' className='container'>
 					<div className="row">
@@ -78,7 +77,7 @@ function mapStateToProps(state) {
 // this allows us to create custom actions and inject additional functionality before dispatching final redux actions
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actions, dispatch)
+    actions: bindActionCreators(actions, dispatch),
   };
 }
 

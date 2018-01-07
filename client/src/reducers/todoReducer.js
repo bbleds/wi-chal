@@ -4,7 +4,7 @@ export default function todoReducer(state = initialState.todos, action) {
 
   switch (action.type) {
 
-    case 'ADD_TODO':
+    case 'ADD_TODO_SUCCESS':
       return [
 				...state,
 				{
@@ -14,9 +14,9 @@ export default function todoReducer(state = initialState.todos, action) {
 				}
 			]
 
-		case 'TOGGLE_TODO':
+		case 'TOGGLE_TODO_SUCCESS':
 			return state.map( item => {
-				if(item.todoId == action.todoId) item.completed = !item.completed
+				if (item.todoId == action.todoId) item.completed = !item.completed
 				return item
 			})
 

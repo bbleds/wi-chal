@@ -4,16 +4,14 @@ export default function errorReducer(state = initialState.errors, action) {
 
   switch (action.type) {
 
-    case 'GENERATE_ERROR':
+    case 'GENERATE_ERROR_SUCCESS':
       return {
-				...state,
 				hasError: true,
-				msg: action.msg
+				msg: action.payload
 			}
 
-		case 'CLEAN_ERRORS':
+		case 'CLEAN_ERRORS_SUCCESS':
 			return {
-				...state,
 				hasError: false,
 				msg: ''
 			}

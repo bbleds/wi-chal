@@ -1,34 +1,34 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-const TodoForm = ({submitHandler, errorHandler}) => {
-	let todoInput
+export default class TodoForm extends Component{
 
-	const validateInput = value => !value.length ? false : true
+	submit(){
+		const val = this.todoInput.value.trim()
 
-	const submit = () => {
-		const value = todoInput.value.trim()
-
-		if(!validateInput(value)){
-			errorHandler('Oops! You cannot create an empty to-do. Please try again.')
-		}else{
-			submitHandler(value)
-			todoInput.value = ''
-		}
+		val.length ?
+			(this.props.submitHandler(val), this.todoInput.value = '') :
+			this.props.errorHandler('Oops! You cannot create an empty to-do. Please try again.')
 	}
 
-	return(
-		<div id="todo-input-form" className="input-group">
-			<input
-				className="form-control"
-				type='text'
-				placeholder="Enter a todo..."
-				ref={ node => todoInput = node }
-				onKeyUp={ e => e.key.toLowerCase() === 'enter' ? ( submit() ) : false }
-				aria-describedby="todo-input-addon"
-			/>
-			<span className="input-group-addon" id="todo-input-addon" onClick={ () => submit() }>Add</span>
-		</div>
-	)
-}
+	render() {
+		const {submitHandler, errorHandler} = this.props
 
-export default TodoForm
+		return(
+			<div id="todo-input-form" className="input-group">
+				<input
+					className="form-control"
+					type='text'
+					placeholder="Enter a todo..."
+					ref={ node => this.todoInput = node }
+					onKeyUp={ e => e.key.toLowerCase() === 'enter' && this.submit() }
+					aria-describedby="todo-input-addon"
+				/>
+				<span
+					className="input-group-addon"
+					id="todo-input-addon"
+					onClick={ () => this.submit() }
+				> Add </span>
+			</div>
+		)
+	}
+}
