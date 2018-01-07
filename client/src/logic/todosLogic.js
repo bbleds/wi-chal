@@ -12,8 +12,10 @@ const addTodoLogic = createLogic({
 		!errors ?
 			dispatch({
 				type: 'ADD_TODO_SUCCESS',
-				text: payload,
-				todoId: uuid()
+				payload: {
+					text: payload,
+					todoId: uuid()
+				}
 			}) :
 			dispatch({
 				type: 'GENERATE_ERROR',
@@ -33,7 +35,7 @@ const toggleTodoLogic = createLogic({
 		!errors ?
 			dispatch({
 				type: 'TOGGLE_TODO_SUCCESS',
-				todoId: payload
+				payload: payload
 			}) :
 			dispatch({
 				type: 'GENERATE_ERROR',

@@ -12,7 +12,7 @@ const visibilityLogic = createLogic({
 		!errors ?
 			dispatch({
 			  type: types.SET_TODOS_VISIBILITY_SUCCESS,
-				todosVisibility: payload
+				payload: payload
 			}) :
 			dispatch({
 				type: types.GENERATE_ERROR,

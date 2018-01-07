@@ -25,8 +25,7 @@ const returnData = (data, msg, errors = false) => {
 
 // handles retrieving application state from data storage
 export const getStorage = () => {
-	const existingState = JSON.parse(window.localStorage.getItem(applicationStateKey))
-	return existingState || initialState
+	return JSON.parse(window.localStorage.getItem(applicationStateKey)) || initialState
 }
 
 // handles persiting a todo into data storage
@@ -59,7 +58,7 @@ export let toggleTodo = todoId => {
 
 // handles setting the todos visibility by a user-selected filter
 export let setTodosVisibilty = val => {
-	
+
 	const state = getStorage()
 	const newState = {...state, todosVisibility: val}
 
