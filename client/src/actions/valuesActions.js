@@ -5,7 +5,7 @@ export function setTodoFormInputValue(val, field) {
   return function (dispatch) {
     return dispatch({
       type: types.SET_ADD_TODO_INPUT,
-			payload: { val, field }
+      payload: { val, field }
     })
   }
 }

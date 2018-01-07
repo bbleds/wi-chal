@@ -5,10 +5,10 @@ import errorReducer from './errorReducer'
 import valuesReducer from './valuesReducer'
 
 const rootReducer = combineReducers({
-	todos : todoReducer,
-	todosVisibility : todosVisibilityReducer,
-	errors: errorReducer,
-	formFieldValues: valuesReducer
-});
+  todos : todoReducer,
+  todosVisibility : todosVisibilityReducer,
+  errors: errorReducer,
+  formFieldValues: valuesReducer
+})
 
 export default rootReducer

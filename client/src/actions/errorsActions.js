@@ -5,7 +5,7 @@ export function generateError(msg) {
   return function (dispatch) {
     return dispatch({
       type: types.GENERATE_ERROR,
-			payload: msg
+      payload: msg
     })
   }
 }

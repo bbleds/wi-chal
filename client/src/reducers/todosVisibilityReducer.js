@@ -5,8 +5,8 @@ export default function todosVisibilityReducer(state = initialState.todosVisibil
 
   switch (action.type) {
 
-		case SET_TODOS_VISIBILITY_SUCCESS:
-			return action.payload
+    case SET_TODOS_VISIBILITY_SUCCESS:
+      return action.payload
 
     default:
       return state

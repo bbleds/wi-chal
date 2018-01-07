@@ -3,24 +3,24 @@ import * as api from '../api/database'
 import * as types from '../constants'
 
 const visibilityLogic = createLogic({
-	type: types.SET_TODOS_VISIBILITY,
-	process({ getState, action }, dispatch, done){
+  type: types.SET_TODOS_VISIBILITY,
+  process({ getState, action }, dispatch, done){
 
     const { payload } = action
     const { errors } = api.setTodosVisibilty(payload)
 
-		!errors ?
-			dispatch({
-			  type: types.SET_TODOS_VISIBILITY_SUCCESS,
-				payload: payload
-			}) :
-			dispatch({
-				type: types.GENERATE_ERROR,
-				payload: 'Oops! An error occurred when filtering your to-do items. Please try again.'
-			})
+    !errors ?
+      dispatch({
+        type: types.SET_TODOS_VISIBILITY_SUCCESS,
+        payload: payload
+      }) :
+      dispatch({
+        type: types.GENERATE_ERROR,
+        payload: 'Oops! An error occurred when filtering your to-do items. Please try again.'
+      })
 
-		done()
-	}
+    done()
+  }
 })
 
 export default [

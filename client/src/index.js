@@ -10,10 +10,10 @@ const store = configureStore(api.getStorage())
 
 // render application to page
 window.addEventListener('load', () => {
-	render(
-		<div>
-			<Root store={store} />
-		</div>,
-		document.getElementById('app')
-	)}
+  render(
+    <div>
+      <Root store={store} />
+    </div>,
+    document.getElementById('app')
+  )}
 );

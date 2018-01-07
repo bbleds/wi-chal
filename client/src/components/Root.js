@@ -4,15 +4,15 @@ import {Provider} from 'react-redux'
 import TodoContainer from './TodoPage/TodoContainer'
 
 export default class Root extends Component{
-	render(){
-		const { store }  = this.props
+  render(){
+    const { store }  = this.props
 
-		return(
-			<div>
-				<Provider store={store} >
-					<TodoContainer />
-				</Provider>
-			</div>
-		)
-	}
+    return(
+      <div>
+        <Provider store={store} >
+        <TodoContainer />
+        </Provider>
+      </div>
+    )
+  }
 }

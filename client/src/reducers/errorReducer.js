@@ -7,15 +7,15 @@ export default function errorReducer(state = initialState.errors, action) {
 
     case GENERATE_ERROR:
       return {
-				hasError: true,
-				msg: action.payload
-			}
+        hasError: true,
+        msg: action.payload
+      }
 
-		case CLEAN_ERRORS:
-			return {
-				hasError: false,
-				msg: ''
-			}
+    case CLEAN_ERRORS:
+      return {
+        hasError: false,
+        msg: ''
+      }
 
     default:
       return state
