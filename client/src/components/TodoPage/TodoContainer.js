@@ -33,16 +33,16 @@ class TodoContainer extends Component{
   }
 
   render(){
-    const { todos, todosVisibility, errors, formValues, state } = this.props
+    const { todos, todosVisibility, errors, formValues } = this.props
 
     return(
       <div>
         {
-        errors.hasError &&
-        <div className='error-message'>
-          <span>{ errors.msg }</span>
-          <span className="clear-error" onClick={ () => this.props.actions.cleanErrors() }>close</span>
-        </div>
+          errors.hasError &&
+          <div className='error-message'>
+            <span>{ errors.msg }</span>
+            <span className="clear-error" onClick={ () => this.props.actions.cleanErrors() }>close</span>
+          </div>
         }
         <div id='todo-wrapper' className='container'>
           <div className="row">
@@ -77,8 +77,7 @@ function mapStateToProps(state) {
     todos: state.todos,
     todosVisibility: state.todosVisibility,
     errors: state.errors,
-    formValues: state.formFieldValues.TodoForm,
-    state
+    formValues: state.formFieldValues.TodoForm
   }
 }
 

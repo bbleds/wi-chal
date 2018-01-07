@@ -10,7 +10,7 @@ export default class Root extends Component{
     return(
       <div>
         <Provider store={store} >
-        <TodoContainer />
+          <TodoContainer />
         </Provider>
       </div>
     )
