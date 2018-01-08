@@ -1,21 +1,16 @@
-import * as types from '../constants'
+import {
+  ADD_TODO,
+  TOGGLE_TODO
+} from '../constants'
 
 // handles adding a new todo and persisting to storage
-export function addTodo(todoText){
-  return function (dispatch) {
-    return dispatch({
-      type: types.ADD_TODO,
-      payload: todoText
-    })
-  }
-}
+export const addTodo = todoText => ({
+  type: ADD_TODO,
+  payload: todoText
+})
 
 // handles toggling the completed property of a single todo item by id
-export function toggleTodo(todoId){
-  return function (dispatch) {
-    return dispatch({
-      type: types.TOGGLE_TODO,
-      payload: todoId
-    })
-  }
-}
+export const toggleTodo = todoId => ({
+  type: TOGGLE_TODO,
+  payload: todoId
+})

@@ -1,20 +1,13 @@
-import * as types from '../constants'
+import {
+  GENERATE_ERROR,
+  CLEAN_ERRORS
+} from '../constants'
 
 // general usage for creating error messages
-export function generateError(msg) {
-  return function (dispatch) {
-    return dispatch({
-      type: types.GENERATE_ERROR,
-      payload: msg
-    })
-  }
-}
+export const  generateError = msg => ({
+  type: GENERATE_ERROR,
+  payload: msg
+})
 
 // general usage for clearing existing errors
-export function cleanErrors() {
-  return function (dispatch) {
-    return dispatch({
-      type: types.CLEAN_ERRORS
-    })
-  }
-}
+export const cleanErrors = () => ({ type: CLEAN_ERRORS })

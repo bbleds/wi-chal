@@ -1,5 +1,8 @@
 import initialState from '../store/initialState'
-import { GENERATE_ERROR, CLEAN_ERRORS } from '../constants'
+import {
+  GENERATE_ERROR,
+  CLEAN_ERRORS 
+} from '../constants'
 
 export default function errorReducer(state = initialState.errors, action) {
 

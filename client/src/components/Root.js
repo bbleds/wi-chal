@@ -5,11 +5,9 @@ import TodoContainer from './TodoPage/TodoContainer'
 
 export default class Root extends Component{
   render(){
-    const { store }  = this.props
-
     return(
       <div>
-        <Provider store={store} >
+        <Provider store={this.props.store} >
           <TodoContainer />
         </Provider>
       </div>

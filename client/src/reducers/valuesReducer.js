@@ -1,5 +1,8 @@
 import initialState from '../store/initialState'
-import { SET_ADD_TODO_INPUT, CLEAR_ADD_TODO_INPUTS } from '../constants'
+import {
+  SET_ADD_TODO_INPUT,
+  CLEAR_ADD_TODO_INPUTS 
+} from '../constants'
 
 export default function valuesReducer(state = initialState.formFieldValues, action) {
 

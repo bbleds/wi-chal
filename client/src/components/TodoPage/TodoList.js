@@ -4,6 +4,12 @@ import {compare} from 'alphanumeric-sort'
 import TodoItem from './TodoItem'
 
 export default class TodoList extends Component{
+  constructor(props){
+    super(props)
+    this.renderTodoItem = this.renderTodoItem.bind(this)
+    this.filterBySelectedVisibility = this.filterBySelectedVisibility.bind(this)
+    this.sortCompleteAndAlphanum = this.sortCompleteAndAlphanum.bind(this)
+  }
 
   // custom compare function to sort by "completed" status and then alphanumerically
   sortCompleteAndAlphanum(a,b){
@@ -27,37 +33,35 @@ export default class TodoList extends Component{
         break
     }
 
-    if(completedStatusSort === item.completed || completedStatusSort === null) return true
+    return completedStatusSort === item.completed || completedStatusSort === null
+  }
+
+  renderTodoItem(item){
+    return (
+      <TodoItem
+        data={item}
+        checkable={true}
+        onChangeHandler={this.props.onChangeHandler}
+        key={item.todoId}
+      />
+    )
   }
 
   render(){
 
     const {todos, onChangeHandler, todosVisibility} = this.props
+    const filteredTodos = todos.filter(this.filterBySelectedVisibility)
 
-    // filter, sort, and build output
-    let output = todos.filter(this.filterBySelectedVisibility.bind(this)).sort(this.sortCompleteAndAlphanum).map( item => {
-      return (
-        <TodoItem
-          data={item}
-          checkable={true}
-          onChangeHandler={onChangeHandler}
-          key={item.todoId}
-        />
-      )}
-    )
-
-    // show default message if no todos are found
-    output = output.length ?
-      output :
-      (<TodoItem
-        checkable={false}
-        data={{text:'No to-do items available'}}
-      />)
-
-    return(
+    return  (
       <ul className='todo-list'>
-        {output}
-      </ul>
-    )
+        { filteredTodos.length ?
+           [...filteredTodos].sort(this.sortCompleteAndAlphanum).map(this.renderTodoItem) :
+          <TodoItem
+            checkable={false}
+            data={{text:'No to-do items available'}}
+          />
+         }
+     </ul>
+   ) 
   }
 }

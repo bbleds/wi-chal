@@ -10,26 +10,15 @@ import TodoForm from './TodoForm'
 import TodoFooter from './TodoFooter'
 
 class TodoContainer extends Component{
+  constructor(props){
+    super(props)
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+  }
+
   handleFormSubmit(val){
     this.props.actions.cleanErrors()
     this.props.actions.clearFormInputs()
     this.props.actions.addTodo(val)
-  }
-
-  handleFormSubmitError(msg){
-    this.props.actions.generateError(msg)
-  }
-
-  handleInputChange(val, field){
-    this.props.actions.setTodoFormInputValue(val, field)
-  }
-
-  handleToggleTodo(todoId){
-    this.props.actions.toggleTodo(todoId)
-  }
-
-  handleTodoFilter(value){
-    this.props.actions.setTodosVisibilty(value)
   }
 
   render(){
@@ -49,19 +38,19 @@ class TodoContainer extends Component{
             <div id='todo-app-output' className="col-md-offset-3 col-md-6">
               <h1>To-do App</h1>
               <TodoForm
-                submitHandler={ val => this.handleFormSubmit(val) }
-                errorHandler={ msg => this.handleFormSubmitError(msg) }
-                onChangeHandler={ (val, field) => this.handleInputChange(val, field) }
+                submitHandler={ this.handleFormSubmit }
+                errorHandler={ this.props.actions.generateError }
+                onChangeHandler={ this.props.actions.setTodoFormInputValue }
                 formValues={formValues}
               />
               <p>Currently viewing - {todosVisibility} </p>
               <TodoList
                 todos={todos}
-                onChangeHandler={ todoId => this.handleToggleTodo(todoId) }
+                onChangeHandler={ this.props.actions.toggleTodo }
                 todosVisibility={ todosVisibility }
               />
               <TodoFooter
-                onClickHandler={ value => this.handleTodoFilter(value) }
+                setTodosVisibilty={ this.props.actions.setTodosVisibilty }
               />
             </div>
           </div>

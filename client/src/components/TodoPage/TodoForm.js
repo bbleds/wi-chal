@@ -2,6 +2,11 @@ import React, {Component} from 'react'
 
 export default class TodoForm extends Component{
 
+  constructor(props){
+    super(props)
+    this.submit = this.submit.bind(this)
+  }
+
   submit(){
     const val = this.props.formValues.addTodoInput.trim()
 
@@ -11,7 +16,7 @@ export default class TodoForm extends Component{
   }
 
   render() {
-    const {submitHandler, errorHandler, onClickHandler, onChangeHandler, formValues } = this.props
+    const { submitHandler, errorHandler, onClickHandler, onChangeHandler, formValues } = this.props
 
     return(
       <div id="todo-input-form" className="input-group">
@@ -21,13 +26,13 @@ export default class TodoForm extends Component{
           placeholder="Enter a todo..."
           value={ formValues.addTodoInput }
           onKeyUp={ e => e.key.toLowerCase() === 'enter' && this.submit() }
-          onChange={ (e) => onChangeHandler(e.target.value, 'addTodoInput') }
+          onChange={ e => onChangeHandler(e.target.value, 'addTodoInput') }
           aria-describedby="todo-input-addon"
         />
         <span
           className="input-group-addon"
           id="todo-input-addon"
-          onClick={ () => this.submit() }
+          onClick={ this.submit }
         > Add </span>
       </div>
     )

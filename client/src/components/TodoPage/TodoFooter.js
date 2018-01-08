@@ -1,15 +1,11 @@
 import React from 'react'
 
-const TodoFooter = ({onClickHandler}) => {
-  return(
-    <div>
-      <a href="#" onClick={ () => { onClickHandler('all') }}>all</a>
-      {' | '}
-      <a href="#" onClick={ () => { onClickHandler('completed') }} >completed</a>
-      {' | '}
-      <a href="#" onClick={ () => { onClickHandler('to-do') }} >to-do</a>
-    </div>
-  )
-}
-
-export default TodoFooter
+export default ({setTodosVisibilty}) => (
+  <div>
+    <a href="#" onClick={ () => setTodosVisibilty('all') } >all</a>
+    {' | '}
+    <a href="#" onClick={ () => setTodosVisibilty('completed') } >completed</a>
+    {' | '}
+    <a href="#" onClick={ () => setTodosVisibilty('to-do') } >to-do</a>
+  </div>
+)

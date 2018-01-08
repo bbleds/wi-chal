@@ -1,14 +1,12 @@
 import { combineReducers } from 'redux'
-import todoReducer from './todoReducer'
-import todosVisibilityReducer from './todosVisibilityReducer'
-import errorReducer from './errorReducer'
-import valuesReducer from './valuesReducer'
+import todos from './todoReducer'
+import todosVisibility from './todosVisibilityReducer'
+import errors from './errorReducer'
+import formFieldValues from './valuesReducer'
 
-const rootReducer = combineReducers({
-  todos : todoReducer,
-  todosVisibility : todosVisibilityReducer,
-  errors: errorReducer,
-  formFieldValues: valuesReducer
+export default combineReducers({
+  todos,
+  todosVisibility,
+  errors,
+  formFieldValues
 })
-
-export default rootReducer

@@ -1,5 +1,8 @@
 import initialState from '../store/initialState'
-import { ADD_TODO_SUCCESS, TOGGLE_TODO_SUCCESS } from '../constants'
+import {
+  ADD_TODO_SUCCESS,
+  TOGGLE_TODO_SUCCESS
+} from '../constants'
 
 export default function todoReducer(state = initialState.todos, action) {
 
@@ -11,17 +14,18 @@ export default function todoReducer(state = initialState.todos, action) {
       return [
         ...state,
         {
-          text: text,
-          todoId: todoId,
+          text,
+          todoId,
           completed: false
         }
       ]
 
     case TOGGLE_TODO_SUCCESS:
-      return state.map( item => {
-        if (item.todoId == action.payload) item.completed = !item.completed
-        return item
-      })
+      return state.map( item =>
+        item.todoId === action.payload ?
+          {...item, completed: !item.completed} :
+          item
+      )
 
     default:
       return state
