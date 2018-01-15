@@ -20,7 +20,7 @@ const addTodoLogic = createLogic({
         type: ADD_TODO_SUCCESS,
         payload: {
           text,
-          todoId: uuid()
+          todoId: data.todoId
         }
       }) :
       dispatch({
